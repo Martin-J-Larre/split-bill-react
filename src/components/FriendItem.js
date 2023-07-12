@@ -1,9 +1,17 @@
 import React from "react";
 import { Button } from "./Button";
 
-export const FriendItem = ({ name, image, balance }) => {
+export const FriendItem = ({
+  name,
+  image,
+  balance,
+  onSelectFriend,
+  selectedFriend,
+}) => {
+  const isSelected = selectedFriend === name;
+
   return (
-    <li>
+    <li className={isSelected ? "selected" : ""}>
       <img src={image} alt={name} />
       <h3>{name}</h3>
       {balance < 0 && (
@@ -17,7 +25,9 @@ export const FriendItem = ({ name, image, balance }) => {
         </p>
       )}
       {balance === 0 && <p>You and {name} are ok!</p>}
-      <Button>Select</Button>
+      <Button onClick={() => onSelectFriend(name)}>
+        {isSelected ? "Close" : "Select"}
+      </Button>
     </li>
   );
 };

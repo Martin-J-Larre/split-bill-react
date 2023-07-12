@@ -5,6 +5,8 @@ const idGenerator = () => {
   return Math.trunc(Math.random()).toString(36) + Date.now().toString(36);
 };
 
+const id = idGenerator();
+
 export const FormAddFriend = ({ onListFriends }) => {
   const [friendName, setFriendName] = useState("");
   const [image, setImage] = useState("https://i.pravatar.cc/48?u=933372");
@@ -21,14 +23,14 @@ export const FormAddFriend = ({ onListFriends }) => {
     if (!friendName || !image) return;
 
     const newFriend = {
-      id: idGenerator(),
+      id: id,
       name: friendName,
       image: image,
       balance: 0,
     };
     onListFriends(newFriend);
     setFriendName("");
-    setImage("https://i.pravatar.cc/48?u=933372");
+    setImage("https://i.pravatar.cc/48?u=933372" + "?=" + { id });
   };
 
   return (
