@@ -52,7 +52,7 @@ function App() {
     );
     setSelectedFriend(null);
   };
-
+console.log(selectedFriend);
   return (
     <div className="app">
       <div className="sidebar">
@@ -72,6 +72,7 @@ function App() {
         <FormSplitBill
           selectedFriend={selectedFriend}
           onSplitBill={handleSplitBill}
+          key={Math.trunc(Math.random() * 1000) + Date.now()}
         />
       )}
     </div>
